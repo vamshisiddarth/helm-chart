@@ -3,12 +3,12 @@ entries:
   chart:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2022-05-06T15:37:34.779075+04:00"
+    created: "2022-05-06T15:40:37.693728+04:00"
     description: A Helm chart for Kubernetes
-    digest: bb620aa1c677afc3eb51d550e8a3c8215574e11f9fed82a3e70f999f857f97c3
+    digest: 9f1f37be33349d96595b25387123e4f1d7c506e1d4a5eb4f508c7e995af8f688
     name: chart
     type: application
     urls:
     - https://vamshisiddarth.github.io/helm-chart/chart-0.1.0.tgz
     version: 0.1.0
-generated: "2022-05-06T15:37:34.778432+04:00"
+generated: "2022-05-06T15:40:37.693062+04:00"
