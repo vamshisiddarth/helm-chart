@@ -1,0 +1,20 @@
+applicationName: backend
+nameSpace: application
+
+replicas: 2
+imageTag: 123
+port: 3000
+
+resource:
+  cpuLimit: 100m
+  memoryLimit: 256
+  cpuRequests: 100m
+  memoryRequests: 256
+
+autoscaler:
+  minreplica: 2
+  maxreplica: 5
+  cpuutilization: 80
+  memoryutilization: 80
+
+mongoUrl: "mongodb://mongodb.application.svc.cluster.local:27017/template-ts"

@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.applicationName }}
+  namespace: {{ .Values.nameSpace }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Values.applicationName }}
+  replicas: {{ .Values.replicas }}
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 50%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.applicationName }}
+      annotations:
+        checksum/configmap: {{ .Values.configMap | toJson | sha256sum | trunc 63 }}
+    spec:
+      containers:
+        - name: {{ .Values.applicationName }}
+          imagePullPolicy: IfNotPresent
+          image: {{ .Values.imageRepo }}/{{ .Values.applicationName }}:{{ .Values.imageTag }}
+          resources:
+            requests:
+              memory: {{ .Values.resource.memoryRequests }}Mi
+              cpu: {{ .Values.resource.cpuRequests }}
+            limits:
+              memory: {{ .Values.resource.memoryLimit }}Mi
+              cpu: {{ .Values.resource.cpuLimit }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.port }}
+          {{- if eq .Values.applicationName "backend" }}
+          envFrom:
+            - configMapRef:
+                name: {{ .Values.applicationName }}-configmap
+          {{- end }}
+          {{- if .Values.healthCheck }}
+          livenessProbe:
+            failureThreshold: 2
+            httpGet:
+              path: {{ .Values.healthCheck.livelinessPath }}
+              port: {{ .Values.port }}
+              scheme: HTTP
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 10
+          readinessProbe:
+            failureThreshold: 2
+            httpGet:
+              path: {{ .Values.healthCheck.readinessPath }}
+              port: {{ .Values.port }}
+              scheme: HTTP
+            initialDelaySeconds: 20
+            periodSeconds: 20
+            successThreshold: 2
+            timeoutSeconds: 30
+          {{- end }}
+---

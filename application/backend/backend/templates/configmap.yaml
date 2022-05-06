@@ -1,0 +1,11 @@
+{{- if eq .Values.applicationName "backend" }}
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: {{ .Values.applicationName }}-configmap
+  annotations:
+    checksum/configmap: {{ .Values.configMap | toJson | sha256sum | trunc 63 }}
+data:
+  MONGODB_URL: {{ .Values.mongoUrl }}
+{{- end }}
