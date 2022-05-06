@@ -23,7 +23,7 @@ spec:
       containers:
         - name: {{ .Values.applicationName }}
           imagePullPolicy: IfNotPresent
-          image: {{ .Values.imageRepo }}/{{ .Values.applicationName }}:{{ .Values.imageTag }}
+          image: {{ .Values.imageRepo }}:{{ .Values.imageTag }}
           resources:
             requests:
               memory: {{ .Values.resource.memoryRequests }}Mi

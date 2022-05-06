@@ -23,7 +23,7 @@ spec:
       containers:
         - name: {{ .Values.applicationName }}
           imagePullPolicy: IfNotPresent
-          image: {{ .Values.imageRepo }}/{{ .Values.applicationName }}:{{ .Values.imageTag }}
+          image: {{ .Values.imageRepo }}:{{ .Values.imageTag }}
           resources:
             requests:
               memory: {{ .Values.resource.memoryRequests }}Mi
@@ -38,6 +38,8 @@ spec:
           envFrom:
             - configMapRef:
                 name: {{ .Values.applicationName }}-configmap
+            - secretRef:
+                name:
           {{- end }}
           {{- if .Values.healthCheck }}
           livenessProbe:
