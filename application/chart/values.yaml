@@ -16,3 +16,5 @@ autoscaler:
   maxreplica: 5
   cpuutilization: 80
   memoryutilization: 80
+
+mongoUrl: "mongodb://mongodb.application.svc.cluster.local:27017/template-ts"
