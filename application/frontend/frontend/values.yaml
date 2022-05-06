@@ -7,9 +7,9 @@ port: 3000
 
 resource:
   cpuLimit: 100m
-  memoryLimit: 256
+  memoryLimit: 512
   cpuRequests: 100m
-  memoryRequests: 256
+  memoryRequests: 512
 
 autoscaler:
   minreplica: 2
