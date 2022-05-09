@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+  name: {{ .Values.applicationName }}
+  namespace: application
+spec:
+  rules:
+    - host: soum.ddns.net
+      http:
+        paths:
+          - backend:
+              serviceName: {{ .Values.applicationName }}
+              servicePort: {{ .Values.port }}
+            path: /

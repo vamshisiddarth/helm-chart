@@ -3,7 +3,7 @@ entries:
   backend:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2022-05-06T21:53:18.536298+04:00"
+    created: "2022-05-09T22:57:56.579399+04:00"
     description: A Helm chart for Kubernetes
     digest: f30be700b4a2a8c40b5aba3fe52b86fa18bc937ebaa3282b01df6c764dbf86a8
     name: backend
@@ -14,12 +14,12 @@ entries:
   frontend:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2022-05-06T21:53:18.53764+04:00"
+    created: "2022-05-09T22:57:56.579923+04:00"
     description: A Helm chart for Kubernetes
-    digest: 84b7c89740e287c751325b690714bdb98f700c9ab73a4ab35e33b9008398a335
+    digest: f6da981f2b80227599e3dcff2c61c9fdcd6ff85c660dc975398ac8501e244086
     name: frontend
     type: application
     urls:
     - https://vamshisiddarth.github.io/helm-chart/frontend-0.1.0.tgz
     version: 0.1.0
-generated: "2022-05-06T21:53:18.535407+04:00"
+generated: "2022-05-09T22:57:56.57692+04:00"
